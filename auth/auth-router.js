@@ -24,7 +24,8 @@ router.post("/login", async (req, res, next) => {
 
         if (user && valid) {
             const token = generateToken(user)
-            req.session = user
+            req.session.token = user
+            console.log(user)
             res.status(200).json({
                 message: `welcome ${user.username}`,
                 token
