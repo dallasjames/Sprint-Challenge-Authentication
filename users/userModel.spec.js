@@ -4,17 +4,14 @@ const db = require("../database/dbConfig")
 beforeEach(async () => {
     await db.seed.run()
 })
-
-describe("user-model", () => {
     
-    test("find", async () => {
-        const res = await userModel.find()
-        expect(res).toHaveLength(1)
-    })
+test("find", async () => {
+    const res = await userModel.find()
+    expect(res).toHaveLength(1)
+})
 
-    test("add", async () => {
-        await userModel.add({ username: "bob", password: "bob123" })
-        const users = await db("users").select()
-        expect(users).toHaveLength(2)
-    })
+test("add", async () => {
+    await userModel.add({ username: "bob", password: "bob123" })
+    const users = await db("users").select()
+    expect(users).toHaveLength(2)
 })
